@@ -9,7 +9,6 @@ const app  = express();
 const port = 3350;
 
 app.use(express.json());
-app.use(Cors);
 app.use(router);
 
-app.listen(port,()=> console.log("Servidor Iniciado na porta: ",port))
+app.listen(port,'0.0.0.0',()=> console.log("Servidor Iniciado na porta: ",port))
