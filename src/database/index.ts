@@ -1,9 +1,12 @@
-import mongoose, { Mongoose } from 'mongoose';
-import config from '../config.json';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+
+dotenv.config();
 
 export default async ()=>{
     try{
-        await mongoose.connect(`mongodb+srv://${config.Mongodb.user}:${config.Mongodb.senha}@cluster0.hnkrg.mongodb.net/${config.Mongodb.banco}?retryWrites=true&w=majority`,{ useNewUrlParser: true ,
+        await mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PWD}@cluster0.hnkrg.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`,{ useNewUrlParser: true ,
         useUnifiedTopology: true })
         return console.log("Banco Conectado com sucesso!")
     }catch(e){

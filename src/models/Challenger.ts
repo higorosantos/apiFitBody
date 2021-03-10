@@ -1,7 +1,7 @@
 import { Schema, Document, model} from "mongoose";
 
 
-interface Challenger extends Document{
+export interface Challenger extends Document{
     type:string,
     description:string,
     amount:number

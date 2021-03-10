@@ -1,11 +1,20 @@
 import { model, Schema , Document } from "mongoose";
+import { Challenger }  from './Challenger'
 
-interface User extends Document {
-    name:string,
-    email:string,
-    senha:string
+export interface Image{
+    key:string,
+    originalName:string,
+    url:string
 }
 
+export interface User extends Document {
+    name:string,
+    email:string,
+    pwd:string,
+    exp:number,
+    challengesCompleted:[Challenger],
+    profileImage:Image
+}
 
 const userSchema:Schema = new Schema({
     name:{
@@ -16,10 +25,24 @@ const userSchema:Schema = new Schema({
         type:String,
         required:String
     },
-    senha:{
+    pwd:{
         type:String,
-        required:true
+        required:true,
+        select:false
+    },
+    exp:{
+        type:Number,
+        default: 0
+    },
+    challengesCompleted:{
+        type: Array,
+        default:[],
+    },
+    profileImage:{
+        type:Object,
+        default: null,
     }
-})
+},{ timestamps:true });
+
 
 export default model<User>("User",userSchema);

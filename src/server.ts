@@ -1,7 +1,6 @@
 import express from 'express';
 import database from './database'
 import { router } from './router';
-import Cors from 'cors';
 
 
 database();
