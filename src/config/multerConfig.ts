@@ -25,7 +25,7 @@ const storageOptions = {
     s3:multerS3({
         s3: new aws.S3(),
         contentType: multerS3.AUTO_CONTENT_TYPE,
-        bucket: `${process.env.BUCKET_NAME}`,
+        bucket: process.env.BUCKET_NAME,
         acl:  "public-read",
         key:(req,file,cb)=>{
             Crypto.randomBytes(16,(err,hash)=>{

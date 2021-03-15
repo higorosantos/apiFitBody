@@ -24,4 +24,5 @@ const challengerSchema:Schema = new Schema({
 }) 
 
 
+
 export default model<IChallenger>('Challenger',challengerSchema);

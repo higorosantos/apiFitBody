@@ -20,7 +20,7 @@ export default function AuthMiddleware(req:Request,res:Response,next:NextFunctio
     const token = authorization.replace('Bearer','').trim();
 
     try{
-       const data = jwt.verify(token,`${process.env.JWT_SECRET}`);
+       const data = jwt.verify(token,process.env.JWT_SECRET);
        console.log(data);
         
 
