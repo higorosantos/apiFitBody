@@ -1,34 +1,36 @@
-import { model, Schema , Document } from "mongoose";
-import { Challenger }  from './Challenger'
+import { Document, model, Schema } from "mongoose";
+import { IChallenger } from './Challenger';
 
-export interface Image{
+
+interface IImage{
     key:string,
     originalName:string,
     url:string
 }
 
-export interface User extends Document {
+export interface IUser extends Document {
     name:string,
     email:string,
     pwd:string,
     exp:number,
-    challengesCompleted:[Challenger],
-    profileImage:Image
+    challengesCompleted:[IChallenger],
+    profileImage:IImage
 }
-
 const userSchema:Schema = new Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        trim:true
     },
     email:{
         type:String,
-        required:String
+        required:String,
+        trim:true
     },
     pwd:{
         type:String,
         required:true,
-        select:false
+        select:false,
     },
     exp:{
         type:Number,
@@ -45,4 +47,4 @@ const userSchema:Schema = new Schema({
 },{ timestamps:true });
 
 
-export default model<User>("User",userSchema);
+export default model<IUser>("User",userSchema);

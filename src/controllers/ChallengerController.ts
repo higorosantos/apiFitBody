@@ -13,4 +13,4 @@ class ChallengerController{
     }
 }
 
-export { ChallengerController } 
+export default  new ChallengerController() 

@@ -1,7 +1,7 @@
-import Challenger from "../models/Challenger"
+import Challenger,{ IChallenger} from "../models/Challenger"
 
 class ChallengerRepository{
-    async create(challenger:any){
+    async create(challenger:IChallenger){
         const { type , description , amount } = challenger; 
         const challengerModel = await Challenger.create({
             type,

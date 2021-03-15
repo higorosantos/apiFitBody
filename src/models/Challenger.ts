@@ -1,7 +1,7 @@
 import { Schema, Document, model} from "mongoose";
 
 
-export interface Challenger extends Document{
+export interface IChallenger extends Document{
     type:string,
     description:string,
     amount:number
@@ -24,4 +24,4 @@ const challengerSchema:Schema = new Schema({
 }) 
 
 
-export default model<Challenger>('Challenger',challengerSchema);
+export default model<IChallenger>('Challenger',challengerSchema);

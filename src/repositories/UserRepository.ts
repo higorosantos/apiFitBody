@@ -1,17 +1,21 @@
-import User from '../models/User';
+import User,{ IUser } from '../models/User';
+import bcrypt from 'bcryptjs';
 
 
 class UserRepository {
 
-   async create(user:any){
+   async create(user:IUser){
       const { name, email , pwd } = user;
       const userModel = await User.create({
           name,
           email,
           pwd
       })
+      const hash = await bcrypt.hash(pwd,10);
+      userModel.pwd = hash;
+     
       await userModel.save();
-
+    
       return userModel;
    }
    
@@ -22,7 +26,7 @@ class UserRepository {
    }
 
    async getByEmail(email:string){
-       const user = await User.findOne({email});
+       const user = await User.findOne({email}).select('pwd');
 
        return user;
    }
