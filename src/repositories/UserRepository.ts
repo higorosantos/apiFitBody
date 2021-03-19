@@ -19,7 +19,7 @@ class UserRepository {
       return userModel;
    }
    
-   async getById(id:number){
+   async getById(id:string){
         const user = await User.findById(id);
 
         return user;

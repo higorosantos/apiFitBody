@@ -4,8 +4,8 @@ import UserRepository from '../repositories/UserRepository'
 class UserController{;
 
     async get(req:Request, res:Response):Promise<Response>{
-         
-        const { id } = req.body;
+        
+        const id = req.id;
 
         try{
             const user = await UserRepository.getById(id);

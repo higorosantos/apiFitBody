@@ -22,9 +22,9 @@ class AuthController{
             }
 
         
-            const token = jwt.sign({id:user.id}, `${process.env.JWT_SECRET}`,{expiresIn:'1d'})
+            const token = jwt.sign({id:user.id}, `${process.env.JWT_SECRET}`,{expiresIn:process.env.TOKEN_VALID})
 
-            return res.json(token);
+            return res.json({user,token:token});
 
         }catch(e){
             return res.sendStatus(401);

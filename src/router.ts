@@ -19,7 +19,7 @@ const router = Router();
 
 router.post('/users',UserController.create);
 router.post('/auth',AuthController.authenticate);
-router.get('/users',AuthMiddleware,UserController.getAll);
+router.get('/users',AuthMiddleware,UserController.get);
 router.post('/imgUpload',Multer(multerOptions).single('file'),(req,res)=>{
     return res.send(req.file);
 });
