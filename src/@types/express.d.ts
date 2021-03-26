@@ -1,5 +1,10 @@
 declare namespace Express{
     export interface Request{
-        id:string
+        id:string,
+        file:{
+            location:string,
+            key:string
+
     }
+}
 }

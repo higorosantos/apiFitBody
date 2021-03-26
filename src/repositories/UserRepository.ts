@@ -20,21 +20,21 @@ class UserRepository {
    }
    
    async getById(id:string){
-        const user = await User.findById(id);
-
-        return user;
+        return await User.findById(id);
    }
 
    async getByEmail(email:string){
-       const user = await User.findOne({email}).select('pwd');
-
-       return user;
+       return await User.findOne({email});;
    }
 
-   async getAll(){
-        const users = await User.find();
+   async update(user:IUser){
+        return await User.findByIdAndUpdate(user.id,user)
+   }
 
-        return users;
+
+   async getAll(){
+
+        return await User.find();
    }
 }
 

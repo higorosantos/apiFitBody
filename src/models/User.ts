@@ -4,7 +4,6 @@ import { IChallenger } from './Challenger';
 
 interface IImage{
     key:string,
-    originalName:string,
     url:string
 }
 
@@ -30,19 +29,17 @@ const userSchema:Schema = new Schema({
     pwd:{
         type:String,
         required:true,
-        select:false,
     },
     exp:{
         type:Number,
         default: 0
     },
-    challengesCompleted:{
-        type: Array,
-        default:[],
-    },
+    challengesCompleted:[{
+        challengerId:String
+    }],
     profileImage:{
-        type:Object,
-        default: null,
+        key:String,
+        url:String
     }
 },{ timestamps:true });
 

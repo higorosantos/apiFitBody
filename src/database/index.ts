@@ -6,3 +6,6 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW
     }).catch((e)=>{
         return console.log("Houve um erro: ",e)
 });
+
+mongoose.set('useFindAndModify', false);
+

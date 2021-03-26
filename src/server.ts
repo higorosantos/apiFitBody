@@ -8,7 +8,7 @@ const app  = express();
 const port = process.env.PORT;
 
 app.use(express.json());
-app.use(Cors())
+app.use(Cors({"origin": 'https://fitbodyweb.herokuapp.com/'}))
 app.use(router);
 
 app.listen(port,'0.0.0.0',()=> console.log("Servidor Iniciado na porta: ",port))
