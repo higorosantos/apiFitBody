@@ -12,6 +12,7 @@ interface Token{
 export default function AuthMiddleware(req:Request,res:Response,next:NextFunction){
     
     const { authorization } = req.headers;
+    console.log(authorization);
 
     if(!authorization){
         return res.sendStatus(401);
@@ -29,6 +30,7 @@ export default function AuthMiddleware(req:Request,res:Response,next:NextFunctio
 
        next();
     }catch(e){
+        console.log(e);
         return res.sendStatus(401);
     }
 

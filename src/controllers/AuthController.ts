@@ -8,8 +8,8 @@ class AuthController{
         const { email , pwd } = req.body;
 
         try{
-            const user = await UserRepository.getByEmail(email);
-            console.log(user);
+            const user = await UserRepository.getByEmail(email,['+pwd','+active']);
+        
 
             if(!user){
         
@@ -23,19 +23,25 @@ class AuthController{
                 return res.sendStatus(401);
             }
 
+            if(!user.active){
+                return res.status(401).json({"error":"Email não verificado!"});
+            }
         
             const token = jwt.sign({id:user.id}, `${process.env.JWT_SECRET}`,{expiresIn:process.env.TOKEN_VALID})
             
-            next();
-            return res.json({user,token:token});
+            user.pwd = undefined;
+            user.active = undefined;
+            
+
+            return res.json({token:token});
             
             
 
         }catch(e){
-            next();
+
             return res.sendStatus(401).json(e);
         }
-        }
+    }
 }
 
 

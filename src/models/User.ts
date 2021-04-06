@@ -1,8 +1,9 @@
 import { Document, model, Schema } from "mongoose";
-import { IChallenger } from './Challenger';
+import crypt from 'crypto';
 
 
-interface IImage{
+
+export interface IImage{
     key:string,
     url:string
 }
@@ -12,7 +13,8 @@ export interface IUser extends Document {
     email:string,
     pwd:string,
     exp:number,
-    challengesCompleted:[IChallenger],
+    active:boolean,
+    challengesCompleted:[string],
     profileImage:IImage
 }
 const userSchema:Schema = new Schema({
@@ -29,6 +31,7 @@ const userSchema:Schema = new Schema({
     pwd:{
         type:String,
         required:true,
+        select:false
     },
     exp:{
         type:Number,
@@ -40,8 +43,13 @@ const userSchema:Schema = new Schema({
     profileImage:{
         key:String,
         url:String
+    },
+    active:{
+        type:Boolean,
+        default:false,
+        select:false
     }
-},{ timestamps:true });
+},{ timestamps:true })
 
 
 export default model<IUser>("User",userSchema);

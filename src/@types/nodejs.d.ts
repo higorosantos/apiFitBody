@@ -9,6 +9,11 @@ namespace NodeJS {
       AWS_SECRET_ACCESS_KEY:string,
       AWS_DEFAULT_REGION:string,
       JWT_SECRET:string,
-      TOKEN_VALID:string
+      TOKEN_VALID:string,
+      EMAIL_USER:string,
+      EMAIL_HOST:string,
+      EMAIL_PASS:string,
+      EMAIL_PORT:number,
+      JWT_ACC_ACTIVE:string
     }
   }

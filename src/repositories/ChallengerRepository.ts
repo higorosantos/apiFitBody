@@ -13,7 +13,9 @@ class ChallengerRepository{
 
         return challengerModel;
     }
-
+    async get(id:string){
+        return await Challenger.findById(id);
+    }
     async getAll(){
         const challengers = await Challenger.find();
 

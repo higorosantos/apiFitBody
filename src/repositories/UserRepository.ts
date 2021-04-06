@@ -20,21 +20,23 @@ class UserRepository {
    }
    
    async getById(id:string){
-        return await User.findById(id);
+        return await User.findById(id).select('-_id');
    }
 
-   async getByEmail(email:string){
-       return await User.findOne({email});;
-   }
+   async getByEmail(email:string,fields?:string[]){
+     return await User.findOne({email}).select(fields);
+  }
 
-   async update(user:IUser){
-        return await User.findByIdAndUpdate(user.id,user)
+   async update(id:string,user:IUser){
+        console.log(user);
+        return await User.findByIdAndUpdate(id,{
+             $set:user
+        }).select('-_id');
    }
-
 
    async getAll(){
 
-        return await User.find();
+        return await User.find().select('-_id');
    }
 }
 
