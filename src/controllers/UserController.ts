@@ -66,11 +66,13 @@ class UserController {
             await TokenRepository.create({
                 userId:user.id,
                 token:hash
-            }as IToken)
+            }as IToken);
             
             await SendEmail.send("Verificação de Email",user.email,"higor.santos22@hotmail.com",user.name,hash,"verifyemail");
 
-            return res.status(201).json(user);
+
+
+            return res.status(201).json({"message":"Conta criado com sucesso!"});
 
         } catch (e) {
             return res.status(400).json(e);
@@ -224,7 +226,7 @@ class UserController {
 
             await UserRepository.update(user.id,user);
             await TokenRepository.delete(data.id);
-
+            
             return res.status(200).json({"message":"Email verificado com sucesso."});
 
         }catch(e){
