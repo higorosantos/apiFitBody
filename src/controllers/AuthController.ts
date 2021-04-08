@@ -13,14 +13,14 @@ class AuthController{
 
             if(!user){
         
-            return res.sendStatus(401);
+                return res.status(401).json({"error":"Usuario ou senha incorreta!"});
            
             }
         
             const isValidPwd = await bcrypt.compare(pwd, user.pwd);
             
             if(!isValidPwd){
-                return res.sendStatus(401);
+                return res.status(401).json({"error":"Usuario ou senha incorreta!"});
             }
 
             if(!user.active){

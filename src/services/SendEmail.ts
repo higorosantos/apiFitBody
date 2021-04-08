@@ -23,7 +23,6 @@ class SendEmail{
         const source = path.join(__dirname,('..'),('views'),('email'),(`${type}.hbs`))
         const template = fs.readFileSync(source,'utf8');
         const compile = hbs.compile(template)
-        console.log(template)
         const html = compile({
             name,
             hash,
@@ -41,6 +40,7 @@ class SendEmail{
             return await this.transporter.sendMail(message);
         
         }catch(e){
+            console.log(e);
             return e;
         }
     }

@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules ./src/server.ts",
-    "copy-files":"copyfiles -u 1 src/views/**/*.hbs dist/",
+    "copy-files": "copyfiles -u 1 src/views/**/*.hbs dist/",
     "postinstall": "tsc && yarn copy-files",
     "start": "node dist/server.js"
   },
   "dependencies": {
     "aws-sdk": "^2.860.0",
     "bcryptjs": "^2.4.3",
+    "bull": "^3.22.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "email-templates": "^8.0.4",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@types/aws-sdk": "^2.7.0",
     "@types/bcryptjs": "^2.4.2",
+    "@types/bull": "^3.15.0",
     "@types/cors": "^2.8.10",
     "@types/dotenv": "^8.2.0",
     "@types/email-templates": "^8.0.2",

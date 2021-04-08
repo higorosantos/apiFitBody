@@ -19,13 +19,14 @@ class UserController {
         const id = !req.params.id ? req.id : req.params.id;
         console.log(id);
         try {
-            const user = await UserRepository.getById(id);
+            const user = await UserRepository.getById(id,['-_id']);
         
             if (!user) {
                 return res.status(404).json({ error: "Usuario não encontrado." })
             }
 
             user.pwd = undefined;
+            user._id = undefined;
 
         
 
@@ -206,7 +207,7 @@ class UserController {
     }
 
     async verify(req:Request,res:Response){
-        const { token }  = req.params;
+        const { access_account:token }  = req.body;
         
 
         try{

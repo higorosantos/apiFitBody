@@ -19,8 +19,8 @@ class UserRepository {
       return userModel;
    }
    
-   async getById(id:string){
-        return await User.findById(id).select('-_id');
+   async getById(id:string,fields?:string[]){
+        return await User.findById(id).select(fields);
    }
 
    async getByEmail(email:string,fields?:string[]){
