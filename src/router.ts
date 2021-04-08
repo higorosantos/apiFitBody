@@ -23,7 +23,7 @@ const findUserLimit = rateLimit({
 router.post('/register',registerLimit,UserController.create);
 router.post('/auth',AuthController.authenticate);
 router.get('/challengers',ChallengerController.getAll);
-router.get('/verify/:token',UserController.verify);
+router.post('/verify',UserController.verify);
 router.post('/recoverpwd',(req,res)=>{
     res.json("TESTE");
 })
